@@ -3,6 +3,7 @@ import Home from './Home/Home'
 import Course from './Courses/courses'
 import Signup from './components/signup'
 import Contact from './Contact/Contact'
+import About from './AboutUs/AboutPage';
 import {Navigate, Route, Routes} from 'react-router-dom'
 import {Toaster} from 'react-hot-toast'
 import { useAuth } from './context/Authprovider';
@@ -19,6 +20,7 @@ function App() {
    <Route path='/course' element={authUser?<Course/>:<Navigate to='/signup'/>}/>
    <Route path='/signup' element={<Signup/>}/>
    <Route path='/contact' element={<Contact/>}/>
+   <Route path='/about' element={<About/>}/>
    </Routes>
    <Toaster/>
    </div>

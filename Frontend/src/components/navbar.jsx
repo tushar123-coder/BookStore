@@ -2,8 +2,11 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Login from './Login'
 import Logout from './logout'
+import axios from 'axios'
+
 import { useAuth } from '../context/Authprovider';
 function navbar() {
+
 
     const [authUser, setAuthUser] = useAuth();
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
@@ -43,7 +46,7 @@ function navbar() {
             <li><a href='/'>Home</a></li>
             <li><a href='/course'>Course</a></li>
             <li><a href='/contact'>Contact</a></li>
-            <li><a>About</a></li>
+            <li><a href='/about'>About</a></li>
         </>
     )
     return (
@@ -80,22 +83,30 @@ function navbar() {
                         <div className="navbar-center hidden lg:flex">
                             <ul className="menu menu-horizontal px-1">{navItems} </ul>
                         </div>
-                        <div className='serachbar hidden md:block'>
-                            <label className=" px-3 py-2 border rounded-md flex items-center gap-2 ">
-                                <input type="text" className="grow outline-none dark:bg-slate-900 dark:text-white" placeholder="Search" />
+                        <div className='searchbar hidden md:block'>
+                        <form>
+                            <label className="px-3 py-2 border rounded-md flex items-center gap-2">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 16 16"
                                     fill="currentColor"
-                                    className="h-4 w-4 opacity-70">
+                                    className="h-4 w-4 opacity-70"
+                                >
                                     <path
                                         fillRule="evenodd"
                                         d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                                        clipRule="evenodd" />
+                                        clipRule="evenodd"
+                                    />
                                 </svg>
+                                <input
+                                    type="text"
+                                    className="grow outline-none dark:bg-slate-900 dark:text-white"
+                                    placeholder="Search"
+                                />
                             </label>
-
-                        </div>
+                        </form>
+                    </div>
+                        
                         <div className='themecontroler'>
                             <label className="swap swap-rotate">
                                 {/* this hidden checkbox controls the state */}
